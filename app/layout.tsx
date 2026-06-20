@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, JetBrains_Mono } from "next/font/google";
+import AppShell from "@/components/app-shell";
 import "./globals.css";
 
 const pressStart2P = Press_Start_2P({
@@ -26,13 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${pressStart2P.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body>
         <div className="av-bg" />
         <div className="av-noise" />
-        <main className="av-main">{children}</main>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
