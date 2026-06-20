@@ -1,6 +1,6 @@
 # Spec 01 — Visual MVP: Todas las pantallas de Arcade Vault
 
-- **Estado:** aprobado
+- **Estado:** implemented
 - **Fecha:** 2026-06-19
 - **Dependencias:** ninguna (es el primer spec)
 - **Objetivo:** Implementar las 5 pantallas y la barra de navegación de Arcade Vault en Next.js (App Router) como UI visual fiel al diseño de referencia, sin lógica de juego real ni backend.
