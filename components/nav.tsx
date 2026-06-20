@@ -15,7 +15,8 @@ export default function Nav({ user, onSignOut }: NavProps) {
   const router = useRouter()
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/" || pathname.startsWith("/game")
+    if (href === "/games") return pathname.startsWith("/games") || pathname.startsWith("/game")
+    if (href === "/") return pathname === "/"
     return pathname.startsWith(href)
   }
 
@@ -36,8 +37,8 @@ export default function Nav({ user, onSignOut }: NavProps) {
 
         <div className="links">
           <a
-            className={isActive("/") ? "active" : ""}
-            onClick={() => go("/")}
+            className={isActive("/games") ? "active" : ""}
+            onClick={() => go("/games")}
           >
             Biblioteca
           </a>
