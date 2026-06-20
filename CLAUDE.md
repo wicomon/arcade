@@ -10,16 +10,10 @@ Arcade Vault is an online gaming platform where players compete for the highest 
 
 Development follows **Spec Driven Design** using the `/spec` and `/spec-impl` skills.
 
-## Commands
-
-```bash
-npm run dev      # start dev server (localhost:3000)
-npm run build    # production build
-npm run start    # serve production build
-npm run lint     # run ESLint
-```
-
 No test runner is configured yet.
+
+## Skills
+Usa siempre /frontend-design para diseñar interfaz de usuario
 
 ## Stack
 
