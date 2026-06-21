@@ -43,6 +43,12 @@ export default function Nav({ user, onSignOut }: NavProps) {
             Biblioteca
           </a>
           <a
+            className={isActive("/about") ? "active" : ""}
+            onClick={() => go("/about")}
+          >
+            Acerca de
+          </a>
+          <a
             className={isActive("/hall-of-fame") ? "active" : ""}
             onClick={() => go("/hall-of-fame")}
           >
@@ -89,6 +95,12 @@ export default function Nav({ user, onSignOut }: NavProps) {
           onClick={() => go("/")}
         >
           Biblioteca
+        </a>
+        <a
+          className={isActive("/about") ? "active" : ""}
+          onClick={() => go("/about")}
+        >
+          Acerca de
         </a>
         <a
           className={isActive("/hall-of-fame") ? "active" : ""}
