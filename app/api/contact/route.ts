@@ -17,6 +17,7 @@ export async function POST(req: Request) {
   }
 
   try {
+    // TODO: modify sender and recipient as needed
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "wcv.dev94@gmail.com",
