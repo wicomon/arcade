@@ -1,32 +1,32 @@
 export type Game = {
-  id: string
-  title: string
-  short: string
-  long: string
-  cat: "ARCADE" | "PUZZLE" | "SHOOTER" | "VERSUS"
-  cover: string
-  color: "cyan" | "magenta" | "yellow" | "green"
-  best: number
-  plays: string
-}
+  id: string;
+  title: string;
+  short: string;
+  long: string;
+  cat: "ARCADE" | "PUZZLE" | "SHOOTER" | "VERSUS";
+  cover: string;
+  color: "cyan" | "magenta" | "yellow" | "green";
+  best: number;
+  plays: string;
+};
 
 export type ScoreRow = {
-  rank: number
-  name: string
-  score: number
-  date: string
-}
+  rank: number;
+  name: string;
+  score: number;
+  date: string;
+};
 
 export type User = {
-  name: string
-} | null
+  name: string;
+} | null;
 
 export type SavedScore = {
-  game: string
-  score: number
-  name: string
-  at: number
-}
+  game: string;
+  score: number;
+  name: string;
+  at: number;
+};
 
 export const GAMES: Game[] = [
   {
@@ -85,8 +85,8 @@ export const GAMES: Game[] = [
     plays: "18.0K",
   },
   {
-    id: "rocas",
-    title: "ROCAS",
+    id: "asteroids",
+    title: "ASTEROIDS",
     short: "Pulveriza asteroides en gravedad cero.",
     long: "Tu nave triangular flota en vacío absoluto. Dispara y rota para dividir rocas en fragmentos cada vez más pequeños. Cuidado con los OVNIs en el horizonte.",
     cat: "SHOOTER",
@@ -117,69 +117,130 @@ export const GAMES: Game[] = [
     best: 24,
     plays: "4.2K",
   },
-]
+];
 
-export const CATS = ["TODOS", "ARCADE", "PUZZLE", "SHOOTER", "VERSUS"]
+export const CATS = ["TODOS", "ARCADE", "PUZZLE", "SHOOTER", "VERSUS"];
 
 export const PLAYERS = [
-  "PX_KAI", "NEONFOX", "Z3R0COOL", "M00NRYU", "VAULT_07", "GLITCHA",
-  "ATARI_KID", "CYBER_LU", "MAGENTA88", "SCANLINE", "BIT_LORD", "ARKADYA",
-  "DROID_X", "RGB_QUEEN", "PIXEL_DAD", "RETROVIRA", "VECTORX", "JOY_STK",
-]
+  "PX_KAI",
+  "NEONFOX",
+  "Z3R0COOL",
+  "M00NRYU",
+  "VAULT_07",
+  "GLITCHA",
+  "ATARI_KID",
+  "CYBER_LU",
+  "MAGENTA88",
+  "SCANLINE",
+  "BIT_LORD",
+  "ARKADYA",
+  "DROID_X",
+  "RGB_QUEEN",
+  "PIXEL_DAD",
+  "RETROVIRA",
+  "VECTORX",
+  "JOY_STK",
+];
 
 export type RecentScore = {
-  player: string
-  game: string
-  score: number
-  time: string
-  color: "cyan" | "magenta" | "yellow" | "green"
-}
+  player: string;
+  game: string;
+  score: number;
+  time: string;
+  color: "cyan" | "magenta" | "yellow" | "green";
+};
 
 export type TopPlayer = {
-  rank: number
-  player: string
-  score: number
-}
+  rank: number;
+  player: string;
+  score: number;
+};
 
 export const RECENT_SCORES: RecentScore[] = [
-  { player: "NEONFOX",  game: "Caída",         score: 184220, time: "hace 2 min",  color: "magenta" },
-  { player: "PX_KAI",   game: "Glotón",        score: 96400,  time: "hace 5 min",  color: "yellow"  },
-  { player: "Z3R0COOL", game: "Invasores",     score: 54190,  time: "hace 8 min",  color: "green"   },
-  { player: "VAULT_07", game: "Rocas",         score: 41200,  time: "hace 12 min", color: "cyan"    },
-  { player: "GLITCHA",  game: "Bloque Buster", score: 28450,  time: "hace 18 min", color: "cyan"    },
-  { player: "ARKADYA",  game: "Serpentina",    score: 7820,   time: "hace 24 min", color: "green"   },
-  { player: "CYBER_LU", game: "Ranaria",       score: 18900,  time: "hace 31 min", color: "yellow"  },
-]
+  {
+    player: "NEONFOX",
+    game: "Caída",
+    score: 184220,
+    time: "hace 2 min",
+    color: "magenta",
+  },
+  {
+    player: "PX_KAI",
+    game: "Glotón",
+    score: 96400,
+    time: "hace 5 min",
+    color: "yellow",
+  },
+  {
+    player: "Z3R0COOL",
+    game: "Invasores",
+    score: 54190,
+    time: "hace 8 min",
+    color: "green",
+  },
+  {
+    player: "VAULT_07",
+    game: "Asteroids",
+    score: 41200,
+    time: "hace 12 min",
+    color: "cyan",
+  },
+  {
+    player: "GLITCHA",
+    game: "Bloque Buster",
+    score: 28450,
+    time: "hace 18 min",
+    color: "cyan",
+  },
+  {
+    player: "ARKADYA",
+    game: "Serpentina",
+    score: 7820,
+    time: "hace 24 min",
+    color: "green",
+  },
+  {
+    player: "CYBER_LU",
+    game: "Ranaria",
+    score: 18900,
+    time: "hace 31 min",
+    color: "yellow",
+  },
+];
 
 export const TOP_PLAYERS_TODAY: TopPlayer[] = [
-  { rank: 1, player: "NEONFOX",  score: 312840 },
-  { rank: 2, player: "PX_KAI",   score: 248110 },
-  { rank: 3, player: "M00NRYU",  score: 196720 },
+  { rank: 1, player: "NEONFOX", score: 312840 },
+  { rank: 2, player: "PX_KAI", score: 248110 },
+  { rank: 3, player: "M00NRYU", score: 196720 },
   { rank: 4, player: "VAULT_07", score: 154300 },
-  { rank: 5, player: "GLITCHA",  score: 138900 },
-]
+  { rank: 5, player: "GLITCHA", score: 138900 },
+];
 
 export function seededScores(seed: number, count = 12): ScoreRow[] {
-  let s = seed
-  const rand = () => (s = (s * 9301 + 49297) % 233280) / 233280
-  const used = new Set<string>()
-  const rows: Omit<ScoreRow, "rank">[] = []
+  let s = seed;
+  const rand = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+  const used = new Set<string>();
+  const rows: Omit<ScoreRow, "rank">[] = [];
 
   for (let i = 0; i < count; i++) {
-    let name: string
+    let name: string;
     do {
-      name = PLAYERS[Math.floor(rand() * PLAYERS.length)]
-    } while (used.has(name) && used.size < PLAYERS.length)
-    used.add(name)
+      name = PLAYERS[Math.floor(rand() * PLAYERS.length)];
+    } while (used.has(name) && used.size < PLAYERS.length);
+    used.add(name);
 
-    const base = Math.floor(50000 + rand() * 250000)
-    const score = base - i * Math.floor(2000 + rand() * 4000)
-    const day = String(1 + Math.floor(rand() * 28)).padStart(2, "0")
-    const mon = String(1 + Math.floor(rand() * 12)).padStart(2, "0")
-    rows.push({ name, score: Math.max(score, 1000), date: `${day}/${mon}/2026` })
+    const base = Math.floor(50000 + rand() * 250000);
+    const score = base - i * Math.floor(2000 + rand() * 4000);
+    const day = String(1 + Math.floor(rand() * 28)).padStart(2, "0");
+    const mon = String(1 + Math.floor(rand() * 12)).padStart(2, "0");
+    rows.push({
+      name,
+      score: Math.max(score, 1000),
+      date: `${day}/${mon}/2026`,
+    });
   }
 
   return rows
     .sort((a, b) => b.score - a.score)
-    .map((r, i) => ({ ...r, rank: i + 1 }))
+    .map((r, i) => ({ ...r, rank: i + 1 }));
 }
