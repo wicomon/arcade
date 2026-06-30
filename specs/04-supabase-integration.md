@@ -1,6 +1,6 @@
 # Spec 04 — Supabase Integration: Configuración base del cliente
 
-- **Estado:** Aprobado
+- **Estado:** Implemented
 - **Fecha:** 2026-06-23
 - **Dependencias:** Spec 01, 02, 03 (ninguna dependencia funcional; es infraestructura transversal)
 - **Objetivo:** Instalar y configurar el cliente de Supabase (browser + server) como base para futuros specs de autenticación, puntuaciones, realtime y edge functions.

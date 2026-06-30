@@ -1,6 +1,6 @@
 # Spec 03 — About Page: Acerca de y formulario de contacto con Resend
 
-- **Estado:** Aprobado
+- **Estado:** Implemented
 - **Fecha:** 2026-06-21
 - **Dependencias:** Spec 01 (estilos en `globals.css`), Spec 02 (Nav actualizable)
 - **Objetivo:** Implementar la página `/about` con sección de misión y formulario de contacto que envía emails reales vía Resend.
