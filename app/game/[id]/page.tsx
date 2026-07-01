@@ -1,22 +1,19 @@
-import { notFound } from "next/navigation"
-import Link from "next/link"
-import { GAMES, seededScores } from "@/lib/data"
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getGameById, getGameLeaderboard } from "@/lib/supabase/queries";
 
-type Props = { params: Promise<{ id: string }> }
-
-export function generateStaticParams() {
-  return GAMES.map((g) => ({ id: g.id }))
-}
+type Props = { params: Promise<{ id: string }> };
 
 export default async function GameDetailPage({ params }: Props) {
-  const { id } = await params
-  const game = GAMES.find((g) => g.id === id)
-  if (!game) notFound()
-
-  const scores = seededScores(id.length * 17 + 3, 10)
+  const { id } = await params;
+  const [game, scores] = await Promise.all([
+    getGameById(id),
+    getGameLeaderboard(id, 10),
+  ]);
+  if (!game) notFound();
 
   const rankClass = (i: number) =>
-    i === 0 ? " top1" : i === 1 ? " top2" : i === 2 ? " top3" : ""
+    i === 0 ? " top1" : i === 1 ? " top2" : i === 2 ? " top3" : "";
 
   return (
     <div className="av-detail fade-in">
@@ -81,26 +78,39 @@ export default async function GameDetailPage({ params }: Props) {
       <aside>
         <div className="leaderboard">
           <h3>MEJORES PUNTUACIONES</h3>
-          {scores.map((r, i) => (
-            <div key={r.name + i} className={"lb-row" + rankClass(i)}>
-              <div className="rk">#{String(r.rank).padStart(2, "0")}</div>
-              <div className="pl">
-                {r.name}
-                <div
-                  style={{
-                    fontSize: 10,
-                    color: "var(--ink-faint)",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  {r.date}
+          {scores.length > 0 ? (
+            scores.map((r, i) => (
+              <div key={r.name + i} className={"lb-row" + rankClass(i)}>
+                <div className="rk">#{String(r.rank).padStart(2, "0")}</div>
+                <div className="pl">
+                  {r.name}
+                  <div
+                    style={{
+                      fontSize: 10,
+                      color: "var(--ink-faint)",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    {r.date}
+                  </div>
                 </div>
+                <div className="sc">{r.score.toLocaleString("es-ES")}</div>
               </div>
-              <div className="sc">{r.score.toLocaleString("es-ES")}</div>
+            ))
+          ) : (
+            <div
+              style={{
+                textAlign: "center",
+                padding: 24,
+                color: "var(--ink-faint)",
+                fontSize: 12,
+              }}
+            >
+              Aún sin puntuaciones.
             </div>
-          ))}
+          )}
         </div>
       </aside>
     </div>
-  )
+  );
 }
