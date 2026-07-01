@@ -1,46 +1,40 @@
-import type { User, SavedScore } from "./data"
+import type { User, SavedScore } from "./data";
+import { insertScore } from "./supabase/actions";
 
-const isBrowser = typeof window !== "undefined"
+const isBrowser = typeof window !== "undefined";
 
 export function getUser(): User {
-  if (!isBrowser) return null
+  if (!isBrowser) return null;
   try {
-    return JSON.parse(localStorage.getItem("av_user") || "null")
+    return JSON.parse(localStorage.getItem("av_user") || "null");
   } catch {
-    return null
+    return null;
   }
 }
 
 export function setUser(user: User): void {
-  if (!isBrowser) return
+  if (!isBrowser) return;
   if (user) {
-    localStorage.setItem("av_user", JSON.stringify(user))
+    localStorage.setItem("av_user", JSON.stringify(user));
   } else {
-    localStorage.removeItem("av_user")
+    localStorage.removeItem("av_user");
   }
 }
 
 export function clearUser(): void {
-  if (!isBrowser) return
-  localStorage.removeItem("av_user")
+  if (!isBrowser) return;
+  localStorage.removeItem("av_user");
 }
 
 export function getScores(): SavedScore[] {
-  if (!isBrowser) return []
+  if (!isBrowser) return [];
   try {
-    return JSON.parse(localStorage.getItem("av_scores") || "[]")
+    return JSON.parse(localStorage.getItem("av_scores") || "[]");
   } catch {
-    return []
+    return [];
   }
 }
 
-export function saveScore(entry: Omit<SavedScore, "at">): void {
-  if (!isBrowser) return
-  try {
-    const all = getScores()
-    all.push({ ...entry, at: Date.now() })
-    localStorage.setItem("av_scores", JSON.stringify(all))
-  } catch {
-    // storage lleno o bloqueado
-  }
+export async function saveScore(entry: Omit<SavedScore, "at">): Promise<void> {
+  await insertScore(entry);
 }

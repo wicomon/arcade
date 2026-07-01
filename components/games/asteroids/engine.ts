@@ -356,12 +356,24 @@ export function createGame(
     "Space",
   ]);
 
+  function isTypingTarget(target: EventTarget | null) {
+    const el = target as HTMLElement | null;
+    return (
+      !!el &&
+      (el.tagName === "INPUT" ||
+        el.tagName === "TEXTAREA" ||
+        el.isContentEditable)
+    );
+  }
+
   function onKeyDown(e: KeyboardEvent) {
+    if (isTypingTarget(e.target)) return;
     if (GAME_KEYS.has(e.code)) e.preventDefault();
     if (!keys[e.code]) justPressed[e.code] = true;
     keys[e.code] = true;
   }
   function onKeyUp(e: KeyboardEvent) {
+    if (isTypingTarget(e.target)) return;
     if (GAME_KEYS.has(e.code)) e.preventDefault();
     keys[e.code] = false;
   }
